@@ -1,1 +1,0 @@
-var base = require('public/index.html');

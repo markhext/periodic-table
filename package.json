@@ -2,7 +2,7 @@
   "name": "periodic-table",
   "version": "0.0.0",
   "description": "App for information about the perionic table of elements",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.5.4",
+    "express": "^4.13.1",
     "react": "^0.13.3",
     "react-router": "^0.13.3"
   },
