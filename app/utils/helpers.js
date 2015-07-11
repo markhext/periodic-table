@@ -29,6 +29,14 @@ function getInfo6() {
     return axios.get('https://periodic-element-table.firebaseio.com/table/6/elements/.json')
 }
 
+function getSub1() {
+    return axios.get('https://periodic-element-table.firebaseio.com/actinoids/.json')
+}
+
+function getSub2() {
+    return axios.get('https://periodic-element-table.firebaseio.com/lanthanoids/.json')
+}
+
 
 // GET THE MAXIMUM VALUE OF ARRAY
 function getMaxOfArray(numArray) {
@@ -38,10 +46,19 @@ function getMaxOfArray(numArray) {
 var helpers = {
     getElementInfo: function () {
 
-        return axios.all([getInfo0(), getInfo1(), getInfo2(), getInfo3(), getInfo4(), getInfo5(), getInfo6()])
+        return axios.all([
+            getInfo0(),
+            getInfo1(),
+            getInfo2(),
+            getInfo3(),
+            getInfo4(),
+            getInfo5(),
+            getInfo6(),
+            getSub1(),
+            getSub2()
+
+        ])
             .then(function(arr) {
-
-
 
                 return {
                     row0: arr[0].data,
@@ -50,9 +67,11 @@ var helpers = {
                     row3: arr[3].data,
                     row4: arr[4].data,
                     row5: arr[5].data,
-                    row6: arr[6].data
-                };
+                    row6: arr[6].data,
+                    sub1: arr[7].data,
+                    sub2: arr[8].data
 
+                };
 
         });
 

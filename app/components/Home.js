@@ -14,13 +14,17 @@ var Home = React.createClass({
          row3: [],
          row4: [],
          row5: [],
-         row6: []
+         row6: [],
+         sub1: [],
+         sub2: []
       }
     },
 
     componentDidMount: function () {
 
         helpers.getElementInfo().then(function(dataObj){
+
+            console.log('GO: -->', dataObj.sub1, dataObj.sub2)
 
             this.setState({
                 row0: dataObj.row0,
@@ -29,7 +33,9 @@ var Home = React.createClass({
                 row3: dataObj.row3,
                 row4: dataObj.row4,
                 row5: dataObj.row5,
-                row6: dataObj.row6
+                row6: dataObj.row6,
+                sub1: dataObj.sub1,
+                sub2: dataObj.sub2
             });
 
 
@@ -42,19 +48,21 @@ var Home = React.createClass({
 
             <div className="elements-container">
 
-                <Row0 data={this.state.row0} breakPoint="1" />
+                <div>
+                    <Row0 data={this.state.row0} breakPoint="1" />
+                    <Row0 data={this.state.row1} breakPoint="2" />
+                    <Row0 data={this.state.row2} breakPoint="2" />
+                    <Row0 data={this.state.row3} breakPoint="18" />
+                    <Row0 data={this.state.row4} breakPoint="18" />
+                    <Row0 data={this.state.row5} breakPoint="18" />
+                    <Row0 data={this.state.row6} breakPoint="18" />
+                </div>
 
-                <Row0 data={this.state.row1} breakPoint="2" />
+                <div className="sub-elements">
+                    <Row1 data={this.state.sub2} />
+                    <Row1 data={this.state.sub1} />
+                </div>
 
-                <Row0 data={this.state.row2} breakPoint="2" />
-
-                <Row0 data={this.state.row3} breakPoint="18" />
-
-                <Row0 data={this.state.row4} breakPoint="18" />
-
-                <Row0 data={this.state.row5} breakPoint="18" />
-
-                <Row0 data={this.state.row6} breakPoint="18" />
 
             </div>
 

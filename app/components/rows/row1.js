@@ -4,52 +4,27 @@ var row1 = React.createClass({
 
     render: function(){
 
-        var _BREAK_POINT = this.props.breakPoint;
+        var ul3 = this.props.data.map(function(elm, index){
 
-        var ul1 = this.props.data.map(function(elm, index){
+            return <li className="pull-left" key={index}>
 
-            if(index < _BREAK_POINT ){
-                return <li className="pull-left" key={index}>
+                <span>{elm.number}</span>
+                <h3>{elm.small}</h3>
 
-                    <h3>{elm.small}</h3>
-                    <span>{elm.name}</span>
-
-                </li>
-            }else {
-                return false;
-            }
+            </li>
 
         });
-
-        var ul2 = this.props.data.map(function(elm, index){
-
-            if(index >= _BREAK_POINT ) {
-
-                return <li className="pull-left" key={index}>
-
-                    <h3>{elm.small}</h3>
-                    <span>{elm.name}</span>
-
-                </li>
-            }else {
-                return false;
-            }
-        });
-
 
         return (
 
-            <section>
+            <section className="pull-right">
 
-                <ul className="pull-left">
-                    {ul1}
+                <ul>
+                    {ul3}
                     <div className="clear"></div>
                 </ul>
 
-                <ul className="pull-right">
-                    {ul2}
-                    <div className="clear"></div>
-                </ul>
+
 
                 <div className="clear"></div>
 

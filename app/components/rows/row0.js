@@ -75,27 +75,24 @@ var row0 = React.createClass({
 
         var _BREAK_POINT = this.props.breakPoint;
 
-
         var ul1 = this.props.data.map(function(elm, index){
 
-            var _setElmClass = 'pull-left';
+            this._markGroups(elm.group);
+
 
             if(elm.small === '57-71' || elm.small === '89-103'){
 
                 this.setElmClass = 'pull-left adjust-value';
             }
 
-            //console.log(elm.group);
-
-            this._markGroups(elm.group);
-
 
             if(index < _BREAK_POINT ){
 
                 return <li className={this.setElmClass} key={index}>
 
-                    <h3>{elm.small}</h3>
                     <span>{elm.number}</span>
+                    <h3>{elm.small}</h3>
+
 
                 </li>
             }else {
@@ -112,8 +109,9 @@ var row0 = React.createClass({
 
                 return <li className={this.setElmClass} key={index}>
 
-                    <h3>{elm.small}</h3>
                     <span>{elm.number}</span>
+                    <h3>{elm.small}</h3>
+
 
                 </li>
             }else {
