@@ -1,0 +1,85 @@
+.pull-left {
+  float:left;
+}
+
+.pull-right {
+  float:right;
+}
+
+.clear {
+  clear:both;
+}
+
+.elements-container ul {
+
+  li.adjust-value {
+
+    height:69px;
+    padding: 5px;
+    width: 60px;
+
+    h3 {
+      font-size: 14px;
+      text-align: center;
+      line-height: 50px;
+    }
+  }
+
+
+  .default {
+    background:$default;
+  }
+
+  .noble {
+    background: $noble;
+  }
+
+  .alkali {
+    background: $alkali;
+    transition: all linear 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      background: rgb(255, 245, 90);
+    }
+  }
+
+  .alkaline {
+    background: $alkaline;
+    transition: all linear 0.2s;
+    cursor: pointer;
+  }
+
+  .m-boron {
+    background: $mboron;
+  }
+
+  .p-carbon {
+    background: $carbon;
+  }
+
+  .pnictogen {
+    background: $pnictogen;
+  }
+
+  .chalcogen {
+    background: $chalcogen;
+  }
+
+  .halogen {
+    background: $halogen;
+  }
+
+  .p-boron {
+    background: $pboron;
+  }
+
+  .m-carbon {
+    background: $mcarbon;
+  }
+
+  .missed {
+    background: #fff;
+    color:#000;
+  }
+}

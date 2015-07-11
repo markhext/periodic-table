@@ -23582,9 +23582,9 @@
 	                    'div',
 	                    { className: 'document-width' },
 	                    React.createElement(
-	                        'h2',
+	                        'h1',
 	                        null,
-	                        'Menu'
+	                        'Periodic Table of Elements'
 	                    )
 	                )
 	            ),
@@ -23608,6 +23608,7 @@
 	var React = __webpack_require__(1);
 	var helpers = __webpack_require__(218);
 	var Row0 = __webpack_require__(220);
+	var Row1 = __webpack_require__(221);
 
 	var Home = React.createClass({
 	    displayName: 'Home',
@@ -23643,8 +23644,14 @@
 	    render: function render() {
 	        return React.createElement(
 	            'div',
-	            null,
-	            React.createElement(Row0, { data: this.state.row0 })
+	            { className: 'elements-container' },
+	            React.createElement(Row0, { data: this.state.row0, breakPoint: '1' }),
+	            React.createElement(Row0, { data: this.state.row1, breakPoint: '2' }),
+	            React.createElement(Row0, { data: this.state.row2, breakPoint: '2' }),
+	            React.createElement(Row0, { data: this.state.row3, breakPoint: '18' }),
+	            React.createElement(Row0, { data: this.state.row4, breakPoint: '18' }),
+	            React.createElement(Row0, { data: this.state.row5, breakPoint: '18' }),
+	            React.createElement(Row0, { data: this.state.row6, breakPoint: '18' })
 	        );
 	    }
 	});
@@ -38060,39 +38067,242 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var _ = __webpack_require__(219);
 
 	var row0 = React.createClass({
 	    displayName: 'row0',
 
+	    _markGroups: function _markGroups(elm) {
+
+	        switch (elm) {
+
+	            case 'Element Noble p':
+	                this.setElmClass = 'pull-left noble';
+
+	                break;
+	            case 'Element Alkali s':
+	                this.setElmClass = 'pull-left alkali';
+
+	                break;
+	            case 'Element Alkaline s':
+	                this.setElmClass = 'pull-left alkaline';
+
+	                break;
+
+	            case 'Element Metalloid Boron p':
+	                this.setElmClass = 'pull-left m-boron';
+
+	                break;
+
+	            case 'Element Nonmetal Carbon p':
+	                this.setElmClass = 'pull-left p-carbon';
+
+	                break;
+
+	            case 'Element Nonmetal Pnictogen p':
+	                this.setElmClass = 'pull-left pnictogen';
+
+	                break;
+
+	            case 'Element Nonmetal Chalcogen p':
+	                this.setElmClass = 'pull-left chalcogen';
+
+	                break;
+
+	            case 'Element Halogen p':
+	                this.setElmClass = 'pull-left halogen';
+
+	                break;
+
+	            case 'Poor Boron p':
+	                this.setElmClass = 'pull-left p-boron';
+
+	                break;
+
+	            case 'Metalloid Carbon p':
+	                this.setElmClass = 'pull-left m-carbon';
+
+	                break;
+
+	            case 'Element Transition d':
+
+	                this.setElmClass = 'pull-left default';
+
+	                break;
+
+	            default:
+	                this.setElmClass = 'pull-left missed';
+
+	                break;
+
+	        }
+	    },
+
 	    render: function render() {
 
-	        var test = this.props.data.map(function (elm, index) {
-	            return React.createElement(
-	                'li',
-	                { key: index },
-	                React.createElement(
-	                    'h4',
-	                    null,
-	                    elm.small
-	                ),
-	                React.createElement(
-	                    'span',
-	                    null,
-	                    elm.name
-	                )
-	            );
-	        });
+	        var _BREAK_POINT = this.props.breakPoint;
+
+	        var ul1 = this.props.data.map((function (elm, index) {
+
+	            var _setElmClass = 'pull-left';
+
+	            if (elm.small === '57-71' || elm.small === '89-103') {
+
+	                this.setElmClass = 'pull-left adjust-value';
+	            }
+
+	            //console.log(elm.group);
+
+	            this._markGroups(elm.group);
+
+	            if (index < _BREAK_POINT) {
+
+	                return React.createElement(
+	                    'li',
+	                    { className: this.setElmClass, key: index },
+	                    React.createElement(
+	                        'h3',
+	                        null,
+	                        elm.small
+	                    ),
+	                    React.createElement(
+	                        'span',
+	                        null,
+	                        elm.number
+	                    )
+	                );
+	            } else {
+	                return false;
+	            }
+	        }).bind(this));
+
+	        var ul2 = this.props.data.map((function (elm, index) {
+
+	            if (index >= _BREAK_POINT) {
+
+	                this._markGroups(elm.group);
+
+	                return React.createElement(
+	                    'li',
+	                    { className: this.setElmClass, key: index },
+	                    React.createElement(
+	                        'h3',
+	                        null,
+	                        elm.small
+	                    ),
+	                    React.createElement(
+	                        'span',
+	                        null,
+	                        elm.number
+	                    )
+	                );
+	            } else {
+	                return false;
+	            }
+	        }).bind(this));
 
 	        return React.createElement(
-	            'ul',
+	            'section',
 	            null,
-	            test
+	            React.createElement(
+	                'ul',
+	                { className: 'pull-left' },
+	                ul1,
+	                React.createElement('div', { className: 'clear' })
+	            ),
+	            React.createElement(
+	                'ul',
+	                { className: 'pull-right' },
+	                ul2,
+	                React.createElement('div', { className: 'clear' })
+	            ),
+	            React.createElement('div', { className: 'clear' })
 	        );
 	    }
 	});
 
 	module.exports = row0;
+
+/***/ },
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var row1 = React.createClass({
+	    displayName: "row1",
+
+	    render: function render() {
+
+	        var _BREAK_POINT = this.props.breakPoint;
+
+	        var ul1 = this.props.data.map(function (elm, index) {
+
+	            if (index < _BREAK_POINT) {
+	                return React.createElement(
+	                    "li",
+	                    { className: "pull-left", key: index },
+	                    React.createElement(
+	                        "h3",
+	                        null,
+	                        elm.small
+	                    ),
+	                    React.createElement(
+	                        "span",
+	                        null,
+	                        elm.name
+	                    )
+	                );
+	            } else {
+	                return false;
+	            }
+	        });
+
+	        var ul2 = this.props.data.map(function (elm, index) {
+
+	            if (index >= _BREAK_POINT) {
+
+	                return React.createElement(
+	                    "li",
+	                    { className: "pull-left", key: index },
+	                    React.createElement(
+	                        "h3",
+	                        null,
+	                        elm.small
+	                    ),
+	                    React.createElement(
+	                        "span",
+	                        null,
+	                        elm.name
+	                    )
+	                );
+	            } else {
+	                return false;
+	            }
+	        });
+
+	        return React.createElement(
+	            "section",
+	            null,
+	            React.createElement(
+	                "ul",
+	                { className: "pull-left" },
+	                ul1,
+	                React.createElement("div", { className: "clear" })
+	            ),
+	            React.createElement(
+	                "ul",
+	                { className: "pull-right" },
+	                ul2,
+	                React.createElement("div", { className: "clear" })
+	            ),
+	            React.createElement("div", { className: "clear" })
+	        );
+	    }
+	});
+
+	module.exports = row1;
 
 /***/ }
 /******/ ]);

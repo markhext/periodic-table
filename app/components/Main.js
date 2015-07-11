@@ -9,7 +9,7 @@ var Main = React.createClass({
                <nav>
 
                    <div className="document-width">
-                       <h2>Menu</h2>
+                       <h1>Periodic Table of Elements</h1>
                    </div>
 
                </nav>

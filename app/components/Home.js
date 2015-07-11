@@ -1,6 +1,7 @@
 var React = require('react');
 var helpers = require('../utils/helpers');
 var Row0 = require('./rows/row0');
+var Row1 = require('./rows/row1');
 
 
 var Home = React.createClass({
@@ -39,8 +40,22 @@ var Home = React.createClass({
     render: function(){
         return (
 
-            <div>
-                <Row0 data={this.state.row0} />
+            <div className="elements-container">
+
+                <Row0 data={this.state.row0} breakPoint="1" />
+
+                <Row0 data={this.state.row1} breakPoint="2" />
+
+                <Row0 data={this.state.row2} breakPoint="2" />
+
+                <Row0 data={this.state.row3} breakPoint="18" />
+
+                <Row0 data={this.state.row4} breakPoint="18" />
+
+                <Row0 data={this.state.row5} breakPoint="18" />
+
+                <Row0 data={this.state.row6} breakPoint="18" />
+
             </div>
 
 

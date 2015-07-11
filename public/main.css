@@ -393,20 +393,24 @@ table {
 }
 
 /* line 1, ../scss/layout/_main.scss */
+body {
+  background: #222;
+}
+
+/* line 5, ../scss/layout/_main.scss */
 .main-container {
   margin: -20px 0;
 }
-/* line 5, ../scss/layout/_main.scss */
+/* line 9, ../scss/layout/_main.scss */
 .main-container nav {
-  background: #eaeaea;
   height: 96px;
   padding: 24px;
+  color: #eaeaea;
 }
-/* line 11, ../scss/layout/_main.scss */
+/* line 15, ../scss/layout/_main.scss */
 .main-container .document-width {
-  max-width: 1280px;
-  padding: 0 24px;
-  margin: 0 auto;
+  max-width: 1296px;
+  margin: 0 auto 48px;
 }
 
 /* line 3, ../scss/modules/_app.scss */
@@ -423,4 +427,115 @@ h1, h2, h3 {
 /* line 12, ../scss/modules/_app.scss */
 h4, h4, h6, strong {
   font-weight: 700;
+}
+
+/* line 17, ../scss/modules/_app.scss */
+h1 {
+  font-size: 48px;
+  color: #e0e0e0;
+}
+
+/* line 3, ../scss/modules/_elements.scss */
+.elements-container ul {
+  padding: 0 9px;
+  margin: 0;
+}
+/* line 8, ../scss/modules/_elements.scss */
+.elements-container ul li {
+  margin: 1px 1px 0 0;
+  display: block;
+  width: 46px;
+  padding: 12px;
+  background: #45B29D;
+}
+/* line 15, ../scss/modules/_elements.scss */
+.elements-container ul li h3 {
+  font-size: 26px;
+  line-height: 12px;
+  margin: 12px 0;
+}
+
+/* line 1, ../scss/state/_state.scss */
+.pull-left {
+  float: left;
+}
+
+/* line 5, ../scss/state/_state.scss */
+.pull-right {
+  float: right;
+}
+
+/* line 9, ../scss/state/_state.scss */
+.clear {
+  clear: both;
+}
+
+/* line 15, ../scss/state/_state.scss */
+.elements-container ul li.adjust-value {
+  height: 69px;
+  padding: 5px;
+  width: 60px;
+}
+/* line 21, ../scss/state/_state.scss */
+.elements-container ul li.adjust-value h3 {
+  font-size: 14px;
+  text-align: center;
+  line-height: 50px;
+}
+/* line 29, ../scss/state/_state.scss */
+.elements-container ul .default {
+  background: #45B29D;
+}
+/* line 33, ../scss/state/_state.scss */
+.elements-container ul .noble {
+  background: #F2E1AC;
+}
+/* line 37, ../scss/state/_state.scss */
+.elements-container ul .alkali {
+  background: #EFC94C;
+  transition: all linear 0.2s;
+  cursor: pointer;
+}
+/* line 42, ../scss/state/_state.scss */
+.elements-container ul .alkali:hover {
+  background: #fff55a;
+}
+/* line 47, ../scss/state/_state.scss */
+.elements-container ul .alkaline {
+  background: #E27A3F;
+  transition: all linear 0.2s;
+  cursor: pointer;
+}
+/* line 53, ../scss/state/_state.scss */
+.elements-container ul .m-boron {
+  background: #F2836B;
+}
+/* line 57, ../scss/state/_state.scss */
+.elements-container ul .p-carbon {
+  background: #F2E1AC;
+}
+/* line 61, ../scss/state/_state.scss */
+.elements-container ul .pnictogen {
+  background: #CD2C24;
+}
+/* line 65, ../scss/state/_state.scss */
+.elements-container ul .chalcogen {
+  background: #f23374;
+}
+/* line 69, ../scss/state/_state.scss */
+.elements-container ul .halogen {
+  background: #F2594B;
+}
+/* line 73, ../scss/state/_state.scss */
+.elements-container ul .p-boron {
+  background: #FFFF9D;
+}
+/* line 77, ../scss/state/_state.scss */
+.elements-container ul .m-carbon {
+  background: #BEEB9F;
+}
+/* line 81, ../scss/state/_state.scss */
+.elements-container ul .missed {
+  background: #fff;
+  color: #000;
 }
