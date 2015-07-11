@@ -23628,8 +23628,6 @@
 
 	        helpers.getElementInfo().then((function (dataObj) {
 
-	            console.log(dataObj.row0);
-
 	            this.setState({
 	                row0: dataObj.row0,
 	                row1: dataObj.row1,
@@ -23644,9 +23642,9 @@
 
 	    render: function render() {
 	        return React.createElement(
-	            'ul',
+	            'div',
 	            null,
-	            React.createElement(Row0, null)
+	            React.createElement(Row0, { data: this.state.row0 })
 	        );
 	    }
 	});
@@ -25670,6 +25668,11 @@
 
 	function getInfo6() {
 	    return axios.get('https://periodic-element-table.firebaseio.com/table/6/elements/.json');
+	}
+
+	// GET THE MAXIMUM VALUE OF ARRAY
+	function getMaxOfArray(numArray) {
+	    return Math.max.apply(null, numArray);
 	}
 
 	var helpers = {
@@ -38057,15 +38060,34 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
+	var _ = __webpack_require__(219);
 
 	var row0 = React.createClass({
 	    displayName: 'row0',
 
 	    render: function render() {
+
+	        var test = this.props.data.map(function (elm, index) {
+	            return React.createElement(
+	                'li',
+	                { key: index },
+	                React.createElement(
+	                    'h4',
+	                    null,
+	                    elm.small
+	                ),
+	                React.createElement(
+	                    'span',
+	                    null,
+	                    elm.name
+	                )
+	            );
+	        });
+
 	        return React.createElement(
-	            'li',
+	            'ul',
 	            null,
-	            'TEST'
+	            test
 	        );
 	    }
 	});

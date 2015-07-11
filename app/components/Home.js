@@ -21,8 +21,6 @@ var Home = React.createClass({
 
         helpers.getElementInfo().then(function(dataObj){
 
-            console.log(dataObj.row0);
-
             this.setState({
                 row0: dataObj.row0,
                 row1: dataObj.row1,
@@ -34,7 +32,6 @@ var Home = React.createClass({
             });
 
 
-
         }.bind(this));
 
     },
@@ -42,10 +39,9 @@ var Home = React.createClass({
     render: function(){
         return (
 
-            <ul>
-                <Row0 />
-            </ul>
-
+            <div>
+                <Row0 data={this.state.row0} />
+            </div>
 
 
         )

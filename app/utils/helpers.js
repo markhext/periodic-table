@@ -30,11 +30,17 @@ function getInfo6() {
 }
 
 
+// GET THE MAXIMUM VALUE OF ARRAY
+function getMaxOfArray(numArray) {
+    return Math.max.apply(null, numArray);
+}
+
 var helpers = {
     getElementInfo: function () {
 
         return axios.all([getInfo0(), getInfo1(), getInfo2(), getInfo3(), getInfo4(), getInfo5(), getInfo6()])
             .then(function(arr) {
+
 
 
                 return {
