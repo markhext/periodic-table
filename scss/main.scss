@@ -1,0 +1,25 @@
+
+// Sass Features
+// =============
+@import "core/variables", "core/functions", "core/mixins";
+
+// - Layout = components
+//@import  "layout/app";
+
+// The Styles
+// ==========
+// Styles are defined in the following order & groupings:
+// Base, Layout, Module, State
+
+// Base styles (reset + elements)
+@import "libs/normalize/normalize", "core/base";
+
+// Base layouts
+@import "layout/main";
+
+// Module components
+@import "modules/app";
+
+// - State = element state modifiers
+@import "state/state";
+
