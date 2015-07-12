@@ -7,6 +7,11 @@ var row0 = React.createClass({
 
         switch(elm){
 
+            case '':
+                this.setElmClass = 'pull-left hydrogen';
+
+                break;
+
             case 'Element Noble p':
                 this.setElmClass = 'pull-left noble';
 
@@ -21,22 +26,22 @@ var row0 = React.createClass({
                 break;
 
             case 'Element Metalloid Boron p':
-                this.setElmClass = 'pull-left m-boron';
+                this.setElmClass = 'pull-left metalloid m-boron';
 
                 break;
 
             case 'Element Nonmetal Carbon p':
-                this.setElmClass = 'pull-left p-carbon';
+                this.setElmClass = 'pull-left nonmetal p-carbon';
 
                 break;
 
             case 'Element Nonmetal Pnictogen p':
-                this.setElmClass = 'pull-left pnictogen';
+                this.setElmClass = 'pull-left nonmetal pnictogen';
 
                 break;
 
             case 'Element Nonmetal Chalcogen p':
-                this.setElmClass = 'pull-left chalcogen';
+                this.setElmClass = 'pull-left nonmetal chalcogen';
 
                 break;
 
@@ -46,24 +51,69 @@ var row0 = React.createClass({
                 break;
 
             case 'Poor Boron p':
-                this.setElmClass = 'pull-left p-boron';
+                this.setElmClass = 'pull-left poor p-boron';
 
                 break;
 
-            case 'Metalloid Carbon p':
-                this.setElmClass = 'pull-left m-carbon';
+            // --
+
+            case 'Element Poor Boron p':
+                this.setElmClass = 'pull-left poor boron-p';
 
                 break;
+
+            case 'Element Metalloid Carbon p':
+                this.setElmClass = 'pull-left metalloid p-carbon';
+
+                break;
+
+            case 'Element Poor Carbon p':
+                this.setElmClass = 'pull-left poor p-carbon-p';
+
+                break;
+
+            case 'Element Metalloid Pnictogen p':
+                this.setElmClass = 'pull-left metalloid pnictogen-p';
+
+                break;
+
+            case 'Element Metalloid Chalcogen p':
+                this.setElmClass = 'pull-left metalloid chalcogen-p';
+
+                break;
+
+            case 'Lanthanoid InnerBorder BlueLeft BlueTop BlueRight':
+                this.setElmClass = 'pull-left ';
+
+                break;
+
+            case 'Actinoid InnerBorder BlueLeft BlueRight':
+                this.setElmClass = 'pull-left ';
+
+                break;
+
+            case 'Element Poor Pnictogen p':
+                this.setElmClass = 'pull-left poor p-pnictogen-p';
+
+                break;
+
+            case 'Element Poor Chalcogen p':
+                this.setElmClass = 'pull-left poor c-chalcogen-p';
+
+                break;
+
+            // ---
 
             case 'Element Transition d':
 
-                this.setElmClass = 'pull-left default';
+                this.setElmClass = 'pull-left transition default';
 
                 break;
 
             default :
                 this.setElmClass = 'pull-left missed';
 
+                console.log('MISSED 0: -->', elm);
                 break;
 
         }
@@ -79,10 +129,12 @@ var row0 = React.createClass({
 
             this._markGroups(elm.group);
 
+            console.log(elm.electrons);
+
 
             if(elm.small === '57-71' || elm.small === '89-103'){
 
-                this.setElmClass = 'pull-left adjust-value';
+                this.setElmClass = 'pull-left conceal';
             }
 
 
@@ -90,11 +142,17 @@ var row0 = React.createClass({
 
                 return <li className={this.setElmClass} key={index}>
 
-                    <span>{elm.number}</span>
-                    <h3>{elm.small}</h3>
+                            <div className="list-cell">
 
 
-                </li>
+                                <span>{elm.number}</span>
+                                <h3>{elm.small}</h3>
+
+                                <span className="elm-name">{elm.name}</span>
+
+                            </div>
+
+                        </li>
             }else {
                 return false;
             }
@@ -109,11 +167,17 @@ var row0 = React.createClass({
 
                 return <li className={this.setElmClass} key={index}>
 
-                    <span>{elm.number}</span>
-                    <h3>{elm.small}</h3>
+                            <div className="list-cell">
+
+                                <span>{elm.number}</span>
+                                <h3>{elm.small}</h3>
+
+                                <span className="elm-name">{elm.name}</span>
+
+                            </div>
 
 
-                </li>
+                        </li>
             }else {
                 return false;
             }

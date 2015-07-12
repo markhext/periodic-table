@@ -25,58 +25,66 @@
     }
   }
 
+  .conceal{
+    visibility: hidden;
+  }
 
-  .default {
-    background:$default;
+  /* ------------------
+  ELEMENT COLOURS
+  --------------------- */
+
+
+  .hydrogen {
+    background:$hydrogen;
   }
 
   .noble {
-    background: $noble;
+    background:$noble;
   }
 
   .alkali {
-    background: $alkali;
-    transition: all linear 0.2s;
-    cursor: pointer;
-
-    &:hover {
-      background: rgb(255, 245, 90);
-    }
+    background:$alkali;
   }
 
   .alkaline {
-    background: $alkaline;
-    transition: all linear 0.2s;
-    cursor: pointer;
+    background:$alkaline;
   }
 
-  .m-boron {
-    background: $mboron;
+  .metalloid {
+    background:$metalloid;
   }
 
-  .p-carbon {
-    background: $carbon;
+  .nonmetal {
+    background:$nonmetal;
   }
 
-  .pnictogen {
-    background: $pnictogen;
-  }
-
-  .chalcogen {
-    background: $chalcogen;
+  .poor {
+    background:$poor;
   }
 
   .halogen {
-    background: $halogen;
+    background:$halogen;
   }
 
-  .p-boron {
-    background: $pboron;
+  .transition {
+    background:$transition;
   }
 
-  .m-carbon {
-    background: $mcarbon;
+  // SUBS
+
+
+  .lanthanoid {
+    background:$lanthanoid;
+
   }
+
+  .actinoid {
+    background:$actinoid;
+
+
+  }
+
+
 
   .missed {
     background: #fff;

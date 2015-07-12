@@ -24,8 +24,6 @@ var Home = React.createClass({
 
         helpers.getElementInfo().then(function(dataObj){
 
-            console.log('GO: -->', dataObj.sub1, dataObj.sub2)
-
             this.setState({
                 row0: dataObj.row0,
                 row1: dataObj.row1,
@@ -47,6 +45,10 @@ var Home = React.createClass({
         return (
 
             <div className="elements-container">
+
+                <section>
+                  <h2></h2>
+                </section>
 
                 <div>
                     <Row0 data={this.state.row0} breakPoint="1" />

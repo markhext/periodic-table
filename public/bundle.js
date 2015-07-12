@@ -23606,7 +23606,7 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var helpers = __webpack_require__(218);
+	var helpers = __webpack_require__(199);
 	var Row0 = __webpack_require__(220);
 	var Row1 = __webpack_require__(221);
 
@@ -23631,8 +23631,6 @@
 
 	        helpers.getElementInfo().then((function (dataObj) {
 
-	            console.log('GO: -->', dataObj.sub1, dataObj.sub2);
-
 	            this.setState({
 	                row0: dataObj.row0,
 	                row1: dataObj.row1,
@@ -23651,6 +23649,11 @@
 	        return React.createElement(
 	            'div',
 	            { className: 'elements-container' },
+	            React.createElement(
+	                'section',
+	                null,
+	                React.createElement('h2', null)
+	            ),
 	            React.createElement(
 	                'div',
 	                null,
@@ -23678,25 +23681,98 @@
 /* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(200);
+	'use strict';
+
+	var axios = __webpack_require__(200);
+	var _ = __webpack_require__(219);
+
+	function getInfo0() {
+	    return axios.get('https://periodic-element-table.firebaseio.com/table/0/elements/.json');
+	}
+
+	function getInfo1() {
+	    return axios.get('https://periodic-element-table.firebaseio.com/table/1/elements/.json');
+	}
+
+	function getInfo2() {
+	    return axios.get('https://periodic-element-table.firebaseio.com/table/2/elements/.json');
+	}
+
+	function getInfo3() {
+	    return axios.get('https://periodic-element-table.firebaseio.com/table/3/elements/.json');
+	}
+
+	function getInfo4() {
+	    return axios.get('https://periodic-element-table.firebaseio.com/table/4/elements/.json');
+	}
+
+	function getInfo5() {
+	    return axios.get('https://periodic-element-table.firebaseio.com/table/5/elements/.json');
+	}
+
+	function getInfo6() {
+	    return axios.get('https://periodic-element-table.firebaseio.com/table/6/elements/.json');
+	}
+
+	function getSub1() {
+	    return axios.get('https://periodic-element-table.firebaseio.com/actinoids/.json');
+	}
+
+	function getSub2() {
+	    return axios.get('https://periodic-element-table.firebaseio.com/lanthanoids/.json');
+	}
+
+	// GET THE MAXIMUM VALUE OF ARRAY
+	function getMaxOfArray(numArray) {
+	    return Math.max.apply(null, numArray);
+	}
+
+	var helpers = {
+	    getElementInfo: function getElementInfo() {
+
+	        return axios.all([getInfo0(), getInfo1(), getInfo2(), getInfo3(), getInfo4(), getInfo5(), getInfo6(), getSub1(), getSub2()]).then(function (arr) {
+
+	            return {
+	                row0: arr[0].data,
+	                row1: arr[1].data,
+	                row2: arr[2].data,
+	                row3: arr[3].data,
+	                row4: arr[4].data,
+	                row5: arr[5].data,
+	                row6: arr[6].data,
+	                sub1: arr[7].data,
+	                sub2: arr[8].data
+
+	            };
+	        });
+	    }
+	};
+
+	module.exports = helpers;
 
 /***/ },
 /* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__(201);
+
+/***/ },
+/* 201 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
-	var defaults = __webpack_require__(201);
-	var utils = __webpack_require__(202);
-	var deprecatedMethod = __webpack_require__(203);
-	var dispatchRequest = __webpack_require__(204);
-	var InterceptorManager = __webpack_require__(211);
+	var defaults = __webpack_require__(202);
+	var utils = __webpack_require__(203);
+	var deprecatedMethod = __webpack_require__(204);
+	var dispatchRequest = __webpack_require__(205);
+	var InterceptorManager = __webpack_require__(212);
 
 	// Polyfill ES6 Promise if needed
 	(function () {
 	  // webpack is being used to set es6-promise to the native Promise
 	  // for the standalone build. It's necessary to make sure polyfill exists.
-	  var P = __webpack_require__(212);
+	  var P = __webpack_require__(213);
 	  if (P && typeof P.polyfill === 'function') {
 	    P.polyfill();
 	  }
@@ -23759,7 +23835,7 @@
 	axios.all = function (promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(217);
+	axios.spread = __webpack_require__(218);
 
 	// Expose interceptors
 	axios.interceptors = {
@@ -23798,12 +23874,12 @@
 
 
 /***/ },
-/* 201 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(202);
+	var utils = __webpack_require__(203);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -23856,7 +23932,7 @@
 
 
 /***/ },
-/* 202 */
+/* 203 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24079,7 +24155,7 @@
 
 
 /***/ },
-/* 203 */
+/* 204 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24107,7 +24183,7 @@
 
 
 /***/ },
-/* 204 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -24124,11 +24200,11 @@
 	    try {
 	      // For browsers use XHR adapter
 	      if (typeof window !== 'undefined') {
-	        __webpack_require__(205)(resolve, reject, config);
+	        __webpack_require__(206)(resolve, reject, config);
 	      }
 	      // For node use HTTP adapter
 	      else if (typeof process !== 'undefined') {
-	        __webpack_require__(205)(resolve, reject, config);
+	        __webpack_require__(206)(resolve, reject, config);
 	      }
 	    } catch (e) {
 	      reject(e);
@@ -24140,20 +24216,20 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 205 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/*global ActiveXObject:true*/
 
-	var defaults = __webpack_require__(201);
-	var utils = __webpack_require__(202);
-	var buildUrl = __webpack_require__(206);
-	var cookies = __webpack_require__(207);
-	var parseHeaders = __webpack_require__(208);
-	var transformData = __webpack_require__(209);
-	var urlIsSameOrigin = __webpack_require__(210);
+	var defaults = __webpack_require__(202);
+	var utils = __webpack_require__(203);
+	var buildUrl = __webpack_require__(207);
+	var cookies = __webpack_require__(208);
+	var parseHeaders = __webpack_require__(209);
+	var transformData = __webpack_require__(210);
+	var urlIsSameOrigin = __webpack_require__(211);
 
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  // Transform request data
@@ -24252,12 +24328,12 @@
 
 
 /***/ },
-/* 206 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(202);
+	var utils = __webpack_require__(203);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -24310,12 +24386,12 @@
 
 
 /***/ },
-/* 207 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(202);
+	var utils = __webpack_require__(203);
 
 	module.exports = {
 	  write: function write(name, value, expires, path, domain, secure) {
@@ -24353,12 +24429,12 @@
 
 
 /***/ },
-/* 208 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(202);
+	var utils = __webpack_require__(203);
 
 	/**
 	 * Parse headers into an object
@@ -24393,12 +24469,12 @@
 
 
 /***/ },
-/* 209 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(202);
+	var utils = __webpack_require__(203);
 
 	/**
 	 * Transform the data for a request or a response
@@ -24418,12 +24494,12 @@
 
 
 /***/ },
-/* 210 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(202);
+	var utils = __webpack_require__(203);
 	var msie = /(msie|trident)/i.test(navigator.userAgent);
 	var urlParsingNode = document.createElement('a');
 	var originUrl;
@@ -24476,12 +24552,12 @@
 
 
 /***/ },
-/* 211 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(202);
+	var utils = __webpack_require__(203);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -24534,7 +24610,7 @@
 
 
 /***/ },
-/* 212 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, setImmediate, global, module) {/*!
@@ -24673,7 +24749,7 @@
 	    function lib$es6$promise$asap$$attemptVertex() {
 	      try {
 	        var r = require;
-	        var vertx = __webpack_require__(215);
+	        var vertx = __webpack_require__(216);
 	        lib$es6$promise$asap$$vertxNext = vertx.runOnLoop || vertx.runOnContext;
 	        return lib$es6$promise$asap$$useVertxTimer();
 	      } catch(e) {
@@ -25498,7 +25574,7 @@
 	    };
 
 	    /* global define:true module:true window: true */
-	    if ("function" === 'function' && __webpack_require__(216)['amd']) {
+	    if ("function" === 'function' && __webpack_require__(217)['amd']) {
 	      !(__WEBPACK_AMD_DEFINE_RESULT__ = function() { return lib$es6$promise$umd$$ES6Promise; }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof module !== 'undefined' && module['exports']) {
 	      module['exports'] = lib$es6$promise$umd$$ES6Promise;
@@ -25510,10 +25586,10 @@
 	}).call(this);
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(213).setImmediate, (function() { return this; }()), __webpack_require__(214)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(214).setImmediate, (function() { return this; }()), __webpack_require__(215)(module)))
 
 /***/ },
-/* 213 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(3).nextTick;
@@ -25592,10 +25668,10 @@
 	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
 	  delete immediateIds[id];
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(213).setImmediate, __webpack_require__(213).clearImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(214).setImmediate, __webpack_require__(214).clearImmediate))
 
 /***/ },
-/* 214 */
+/* 215 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -25611,20 +25687,20 @@
 
 
 /***/ },
-/* 215 */
+/* 216 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 216 */
+/* 217 */
 /***/ function(module, exports) {
 
 	module.exports = function() { throw new Error("define cannot be used indirect"); };
 
 
 /***/ },
-/* 217 */
+/* 218 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25655,79 +25731,6 @@
 	  };
 	};
 
-
-/***/ },
-/* 218 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var axios = __webpack_require__(199);
-	var _ = __webpack_require__(219);
-
-	function getInfo0() {
-	    return axios.get('https://periodic-element-table.firebaseio.com/table/0/elements/.json');
-	}
-
-	function getInfo1() {
-	    return axios.get('https://periodic-element-table.firebaseio.com/table/1/elements/.json');
-	}
-
-	function getInfo2() {
-	    return axios.get('https://periodic-element-table.firebaseio.com/table/2/elements/.json');
-	}
-
-	function getInfo3() {
-	    return axios.get('https://periodic-element-table.firebaseio.com/table/3/elements/.json');
-	}
-
-	function getInfo4() {
-	    return axios.get('https://periodic-element-table.firebaseio.com/table/4/elements/.json');
-	}
-
-	function getInfo5() {
-	    return axios.get('https://periodic-element-table.firebaseio.com/table/5/elements/.json');
-	}
-
-	function getInfo6() {
-	    return axios.get('https://periodic-element-table.firebaseio.com/table/6/elements/.json');
-	}
-
-	function getSub1() {
-	    return axios.get('https://periodic-element-table.firebaseio.com/actinoids/.json');
-	}
-
-	function getSub2() {
-	    return axios.get('https://periodic-element-table.firebaseio.com/lanthanoids/.json');
-	}
-
-	// GET THE MAXIMUM VALUE OF ARRAY
-	function getMaxOfArray(numArray) {
-	    return Math.max.apply(null, numArray);
-	}
-
-	var helpers = {
-	    getElementInfo: function getElementInfo() {
-
-	        return axios.all([getInfo0(), getInfo1(), getInfo2(), getInfo3(), getInfo4(), getInfo5(), getInfo6(), getSub1(), getSub2()]).then(function (arr) {
-
-	            return {
-	                row0: arr[0].data,
-	                row1: arr[1].data,
-	                row2: arr[2].data,
-	                row3: arr[3].data,
-	                row4: arr[4].data,
-	                row5: arr[5].data,
-	                row6: arr[6].data,
-	                sub1: arr[7].data,
-	                sub2: arr[8].data
-
-	            };
-	        });
-	    }
-	};
-
-	module.exports = helpers;
 
 /***/ },
 /* 219 */
@@ -38085,7 +38088,7 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(214)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(215)(module), (function() { return this; }())))
 
 /***/ },
 /* 220 */
@@ -38102,6 +38105,11 @@
 
 	        switch (elm) {
 
+	            case '':
+	                this.setElmClass = 'pull-left hydrogen';
+
+	                break;
+
 	            case 'Element Noble p':
 	                this.setElmClass = 'pull-left noble';
 
@@ -38116,22 +38124,22 @@
 	                break;
 
 	            case 'Element Metalloid Boron p':
-	                this.setElmClass = 'pull-left m-boron';
+	                this.setElmClass = 'pull-left metalloid m-boron';
 
 	                break;
 
 	            case 'Element Nonmetal Carbon p':
-	                this.setElmClass = 'pull-left p-carbon';
+	                this.setElmClass = 'pull-left nonmetal p-carbon';
 
 	                break;
 
 	            case 'Element Nonmetal Pnictogen p':
-	                this.setElmClass = 'pull-left pnictogen';
+	                this.setElmClass = 'pull-left nonmetal pnictogen';
 
 	                break;
 
 	            case 'Element Nonmetal Chalcogen p':
-	                this.setElmClass = 'pull-left chalcogen';
+	                this.setElmClass = 'pull-left nonmetal chalcogen';
 
 	                break;
 
@@ -38141,24 +38149,69 @@
 	                break;
 
 	            case 'Poor Boron p':
-	                this.setElmClass = 'pull-left p-boron';
+	                this.setElmClass = 'pull-left poor p-boron';
 
 	                break;
 
-	            case 'Metalloid Carbon p':
-	                this.setElmClass = 'pull-left m-carbon';
+	            // --
+
+	            case 'Element Poor Boron p':
+	                this.setElmClass = 'pull-left poor boron-p';
 
 	                break;
+
+	            case 'Element Metalloid Carbon p':
+	                this.setElmClass = 'pull-left metalloid p-carbon';
+
+	                break;
+
+	            case 'Element Poor Carbon p':
+	                this.setElmClass = 'pull-left poor p-carbon-p';
+
+	                break;
+
+	            case 'Element Metalloid Pnictogen p':
+	                this.setElmClass = 'pull-left metalloid pnictogen-p';
+
+	                break;
+
+	            case 'Element Metalloid Chalcogen p':
+	                this.setElmClass = 'pull-left metalloid chalcogen-p';
+
+	                break;
+
+	            case 'Lanthanoid InnerBorder BlueLeft BlueTop BlueRight':
+	                this.setElmClass = 'pull-left ';
+
+	                break;
+
+	            case 'Actinoid InnerBorder BlueLeft BlueRight':
+	                this.setElmClass = 'pull-left ';
+
+	                break;
+
+	            case 'Element Poor Pnictogen p':
+	                this.setElmClass = 'pull-left poor p-pnictogen-p';
+
+	                break;
+
+	            case 'Element Poor Chalcogen p':
+	                this.setElmClass = 'pull-left poor c-chalcogen-p';
+
+	                break;
+
+	            // ---
 
 	            case 'Element Transition d':
 
-	                this.setElmClass = 'pull-left default';
+	                this.setElmClass = 'pull-left transition default';
 
 	                break;
 
 	            default:
 	                this.setElmClass = 'pull-left missed';
 
+	                console.log('MISSED 0: -->', elm);
 	                break;
 
 	        }
@@ -38172,9 +38225,11 @@
 
 	            this._markGroups(elm.group);
 
+	            console.log(elm.electrons);
+
 	            if (elm.small === '57-71' || elm.small === '89-103') {
 
-	                this.setElmClass = 'pull-left adjust-value';
+	                this.setElmClass = 'pull-left conceal';
 	            }
 
 	            if (index < _BREAK_POINT) {
@@ -38183,14 +38238,23 @@
 	                    'li',
 	                    { className: this.setElmClass, key: index },
 	                    React.createElement(
-	                        'span',
-	                        null,
-	                        elm.number
-	                    ),
-	                    React.createElement(
-	                        'h3',
-	                        null,
-	                        elm.small
+	                        'div',
+	                        { className: 'list-cell' },
+	                        React.createElement(
+	                            'span',
+	                            null,
+	                            elm.number
+	                        ),
+	                        React.createElement(
+	                            'h3',
+	                            null,
+	                            elm.small
+	                        ),
+	                        React.createElement(
+	                            'span',
+	                            { className: 'elm-name' },
+	                            elm.name
+	                        )
 	                    )
 	                );
 	            } else {
@@ -38208,14 +38272,23 @@
 	                    'li',
 	                    { className: this.setElmClass, key: index },
 	                    React.createElement(
-	                        'span',
-	                        null,
-	                        elm.number
-	                    ),
-	                    React.createElement(
-	                        'h3',
-	                        null,
-	                        elm.small
+	                        'div',
+	                        { className: 'list-cell' },
+	                        React.createElement(
+	                            'span',
+	                            null,
+	                            elm.number
+	                        ),
+	                        React.createElement(
+	                            'h3',
+	                            null,
+	                            elm.small
+	                        ),
+	                        React.createElement(
+	                            'span',
+	                            { className: 'elm-name' },
+	                            elm.name
+	                        )
 	                    )
 	                );
 	            } else {
@@ -38249,43 +38322,91 @@
 /* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var React = __webpack_require__(1);
 
 	var row1 = React.createClass({
-	    displayName: "row1",
+	    displayName: 'row1',
+
+	    _markGroups: function _markGroups(elm) {
+
+	        switch (elm) {
+
+	            case 'Element Lanthanoid f':
+
+	                this.setElmClass = 'pull-left lanthanoid f';
+
+	                break;
+
+	            case 'Element Lanthanoid d':
+
+	                this.setElmClass = 'pull-left lanthanoid d';
+
+	                break;
+
+	            case 'Element Actinoid f':
+
+	                this.setElmClass = 'pull-left actinoid f';
+
+	                break;
+
+	            case 'Element Actinoid d':
+
+	                this.setElmClass = 'pull-left actinoid d';
+
+	                break;
+
+	            default:
+	                this.setElmClass = 'pull-left missed';
+
+	                console.log('MISSED 1: -->', elm);
+	                break;
+
+	        }
+	    },
 
 	    render: function render() {
 
-	        var ul3 = this.props.data.map(function (elm, index) {
+	        var ul3 = this.props.data.map((function (elm, index) {
+
+	            this._markGroups(elm.group);
 
 	            return React.createElement(
-	                "li",
-	                { className: "pull-left", key: index },
+	                'li',
+	                { className: this.setElmClass, key: index },
 	                React.createElement(
-	                    "span",
-	                    null,
-	                    elm.number
-	                ),
-	                React.createElement(
-	                    "h3",
-	                    null,
-	                    elm.small
+	                    'div',
+	                    { className: 'list-cell' },
+	                    React.createElement(
+	                        'span',
+	                        { className: 'electrons' },
+	                        elm.number
+	                    ),
+	                    React.createElement(
+	                        'h3',
+	                        null,
+	                        elm.small
+	                    ),
+	                    React.createElement(
+	                        'span',
+	                        { className: 'elm-name' },
+	                        elm.name
+	                    )
 	                )
 	            );
-	        });
+	        }).bind(this));
 
 	        return React.createElement(
-	            "section",
-	            { className: "pull-right" },
+	            'section',
+	            { className: 'pull-right' },
 	            React.createElement(
-	                "ul",
+	                'ul',
 	                null,
 	                ul3,
-	                React.createElement("div", { className: "clear" })
+	                React.createElement('div', { className: 'clear' })
 	            ),
-	            React.createElement("div", { className: "clear" })
+	            React.createElement('div', { className: 'clear' })
 	        );
 	    }
 	});

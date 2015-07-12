@@ -2,18 +2,66 @@ var React = require('react');
 
 var row1 = React.createClass({
 
+
+    _markGroups: function (elm) {
+
+        switch(elm){
+
+            case 'Element Lanthanoid f':
+
+                this.setElmClass = 'pull-left lanthanoid f';
+
+                break;
+
+            case 'Element Lanthanoid d':
+
+                this.setElmClass = 'pull-left lanthanoid d';
+
+                break;
+
+            case 'Element Actinoid f':
+
+                this.setElmClass = 'pull-left actinoid f';
+
+                break;
+
+            case 'Element Actinoid d':
+
+                this.setElmClass = 'pull-left actinoid d';
+
+                break;
+
+
+
+            default :
+                this.setElmClass = 'pull-left missed';
+
+                console.log('MISSED 1: -->', elm);
+                break;
+
+        }
+
+    },
+
+
     render: function(){
 
         var ul3 = this.props.data.map(function(elm, index){
 
-            return <li className="pull-left" key={index}>
+            this._markGroups(elm.group);
 
-                <span>{elm.number}</span>
-                <h3>{elm.small}</h3>
+            return <li className={this.setElmClass} key={index}>
 
-            </li>
+                        <div className="list-cell">
 
-        });
+                            <span className="electrons">{elm.number}</span>
+                            <h3>{elm.small}</h3>
+                            <span className="elm-name">{elm.name}</span>
+
+                        </div>
+                    </li>
+
+        }.bind(this));
 
         return (
 
