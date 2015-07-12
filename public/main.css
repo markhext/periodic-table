@@ -521,47 +521,91 @@ h1 {
 .elements-container ul .hydrogen {
   background: #F3FFE2;
 }
-/* line 41, ../scss/state/_state.scss */
+/* line 40, ../scss/state/_state.scss */
+.elements-container ul .hydrogen:hover {
+  background: #ffffff;
+}
+/* line 46, ../scss/state/_state.scss */
 .elements-container ul .noble {
   background: #3CBAC8;
 }
-/* line 45, ../scss/state/_state.scss */
+/* line 49, ../scss/state/_state.scss */
+.elements-container ul .noble:hover {
+  background: #41deec;
+}
+/* line 54, ../scss/state/_state.scss */
 .elements-container ul .alkali {
   background: #F0CA4D;
 }
-/* line 49, ../scss/state/_state.scss */
+/* line 57, ../scss/state/_state.scss */
+.elements-container ul .alkali:hover {
+  background: #ffec66;
+}
+/* line 62, ../scss/state/_state.scss */
 .elements-container ul .alkaline {
   background: #F3B562;
 }
-/* line 53, ../scss/state/_state.scss */
+/* line 65, ../scss/state/_state.scss */
+.elements-container ul .alkaline:hover {
+  background: #ffc982;
+}
+/* line 70, ../scss/state/_state.scss */
 .elements-container ul .metalloid {
   background: #85CC9F;
 }
-/* line 57, ../scss/state/_state.scss */
+/* line 73, ../scss/state/_state.scss */
+.elements-container ul .metalloid:hover {
+  background: #99e0b3;
+}
+/* line 78, ../scss/state/_state.scss */
 .elements-container ul .nonmetal {
   background: #C8E8C7;
 }
-/* line 61, ../scss/state/_state.scss */
-.elements-container ul .poor {
-  background: #63A69F;
+/* line 81, ../scss/state/_state.scss */
+.elements-container ul .nonmetal:hover {
+  background: #dfffde;
 }
-/* line 65, ../scss/state/_state.scss */
+/* line 86, ../scss/state/_state.scss */
 .elements-container ul .halogen {
   background: #93EDD4;
 }
-/* line 69, ../scss/state/_state.scss */
+/* line 89, ../scss/state/_state.scss */
+.elements-container ul .halogen:hover {
+  background: #aaffe9;
+}
+/* line 94, ../scss/state/_state.scss */
+.elements-container ul .poor {
+  background: #63A69F;
+}
+/* line 97, ../scss/state/_state.scss */
+.elements-container ul .poor:hover {
+  background: #78bab3;
+}
+/* line 102, ../scss/state/_state.scss */
 .elements-container ul .transition {
   background: #F2836B;
 }
-/* line 76, ../scss/state/_state.scss */
+/* line 105, ../scss/state/_state.scss */
+.elements-container ul .transition:hover {
+  background: #ff9c81;
+}
+/* line 113, ../scss/state/_state.scss */
 .elements-container ul .lanthanoid {
   background: #87A0A4;
 }
-/* line 81, ../scss/state/_state.scss */
+/* line 116, ../scss/state/_state.scss */
+.elements-container ul .lanthanoid:hover {
+  background: #9cb5b9;
+}
+/* line 122, ../scss/state/_state.scss */
 .elements-container ul .actinoid {
   background: #56797F;
 }
-/* line 89, ../scss/state/_state.scss */
+/* line 125, ../scss/state/_state.scss */
+.elements-container ul .actinoid:hover {
+  background: #6a8d93;
+}
+/* line 132, ../scss/state/_state.scss */
 .elements-container ul .missed {
   background: #fff;
   color: #000;
