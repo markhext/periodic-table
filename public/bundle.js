@@ -23609,6 +23609,7 @@
 	var helpers = __webpack_require__(199);
 	var Row0 = __webpack_require__(220);
 	var Row1 = __webpack_require__(221);
+	var ElementView = __webpack_require__(222);
 
 	var Home = React.createClass({
 	    displayName: 'Home',
@@ -23640,9 +23641,16 @@
 	                row5: dataObj.row5,
 	                row6: dataObj.row6,
 	                sub1: dataObj.sub1,
-	                sub2: dataObj.sub2
+	                sub2: dataObj.sub2,
+	                _data: {}
 	            });
 	        }).bind(this));
+	    },
+
+	    onUpdate: function onUpdate(data) {
+	        this.setState({
+	            _data: data
+	        });
 	    },
 
 	    render: function render() {
@@ -23652,18 +23660,18 @@
 	            React.createElement(
 	                'section',
 	                null,
-	                React.createElement('h2', null)
+	                React.createElement(ElementView, { data: this.state._data })
 	            ),
 	            React.createElement(
 	                'div',
 	                null,
-	                React.createElement(Row0, { data: this.state.row0, breakPoint: '1' }),
-	                React.createElement(Row0, { data: this.state.row1, breakPoint: '2' }),
-	                React.createElement(Row0, { data: this.state.row2, breakPoint: '2' }),
-	                React.createElement(Row0, { data: this.state.row3, breakPoint: '18' }),
-	                React.createElement(Row0, { data: this.state.row4, breakPoint: '18' }),
-	                React.createElement(Row0, { data: this.state.row5, breakPoint: '18' }),
-	                React.createElement(Row0, { data: this.state.row6, breakPoint: '18' })
+	                React.createElement(Row0, { onUpdate: this.onUpdate, data: this.state.row0, breakPoint: '1' }),
+	                React.createElement(Row0, { onUpdate: this.onUpdate, data: this.state.row1, breakPoint: '2' }),
+	                React.createElement(Row0, { onUpdate: this.onUpdate, data: this.state.row2, breakPoint: '2' }),
+	                React.createElement(Row0, { onUpdate: this.onUpdate, data: this.state.row3, breakPoint: '18' }),
+	                React.createElement(Row0, { onUpdate: this.onUpdate, data: this.state.row4, breakPoint: '18' }),
+	                React.createElement(Row0, { onUpdate: this.onUpdate, data: this.state.row5, breakPoint: '18' }),
+	                React.createElement(Row0, { onUpdate: this.onUpdate, data: this.state.row6, breakPoint: '18' })
 	            ),
 	            React.createElement(
 	                'div',
@@ -38097,6 +38105,7 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
+	var elementView = __webpack_require__(222);
 
 	var row0 = React.createClass({
 	    displayName: 'row0',
@@ -38217,6 +38226,19 @@
 	        }
 	    },
 
+	    getInitialState: function getInitialState() {
+	        return {
+	            data: '---'
+	        };
+	    },
+
+	    update: function update(k) {
+
+	        console.log('CLICKED: -->', this.props.data[k].small);
+
+	        this.props.onUpdate(this.props.data[k].small);
+	    },
+
 	    render: function render() {
 
 	        var _BREAK_POINT = this.props.breakPoint;
@@ -38224,8 +38246,6 @@
 	        var ul1 = this.props.data.map((function (elm, index) {
 
 	            this._markGroups(elm.group);
-
-	            console.log(elm.electrons);
 
 	            if (elm.small === '57-71' || elm.small === '89-103') {
 
@@ -38236,7 +38256,7 @@
 
 	                return React.createElement(
 	                    'li',
-	                    { className: this.setElmClass, key: index },
+	                    { onMouseOver: this.update.bind(this, index), className: this.setElmClass, key: index },
 	                    React.createElement(
 	                        'div',
 	                        { className: 'list-cell' },
@@ -38254,7 +38274,8 @@
 	                            'span',
 	                            { className: 'elm-name' },
 	                            elm.name
-	                        )
+	                        ),
+	                        React.createElement('div', { className: 'clear' })
 	                    )
 	                );
 	            } else {
@@ -38412,6 +38433,51 @@
 	});
 
 	module.exports = row1;
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var Row0 = __webpack_require__(220);
+
+	var elementView = React.createClass({
+	    displayName: 'elementView',
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            element: '---'
+	        };
+	    },
+
+	    componentDidMount: function componentDidMount() {
+
+	        var test = Row0.data;
+
+	        console.log('DATA: -->', test);
+
+	        this.setState({
+	            element: test
+	        });
+	    },
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            { className: 'element-view' },
+	            React.createElement(
+	                'aside',
+	                null,
+	                this.props.data
+	            )
+	        );
+	    }
+
+	});
+
+	module.exports = elementView;
 
 /***/ }
 /******/ ]);

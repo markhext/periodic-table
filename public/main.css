@@ -440,12 +440,16 @@ h1 {
   font-weight: 700;
 }
 
-/* line 3, ../scss/modules/_elements.scss */
+/* line 1, ../scss/modules/_elements.scss */
+.elements-container {
+  position: relative;
+}
+/* line 5, ../scss/modules/_elements.scss */
 .elements-container ul {
   padding: 0 9px;
   margin: 0;
 }
-/* line 8, ../scss/modules/_elements.scss */
+/* line 10, ../scss/modules/_elements.scss */
 .elements-container ul li {
   margin: 1px 1px 0 0;
   display: block;
@@ -456,28 +460,48 @@ h1 {
   transition: all linear 0.2s;
   cursor: pointer;
 }
-/* line 18, ../scss/modules/_elements.scss */
+/* line 20, ../scss/modules/_elements.scss */
 .elements-container ul li .list-cell {
   position: relative;
 }
-/* line 23, ../scss/modules/_elements.scss */
+/* line 25, ../scss/modules/_elements.scss */
 .elements-container ul li h3 {
   font-size: 30px;
   line-height: 12px;
   margin: 14px 0 0 -7px;
   color: #222;
 }
-/* line 30, ../scss/modules/_elements.scss */
+/* line 32, ../scss/modules/_elements.scss */
 .elements-container ul li span {
   font-size: 12px;
   display: block;
   margin-top: -6px;
   margin-left: -7px;
 }
-/* line 36, ../scss/modules/_elements.scss */
+/* line 38, ../scss/modules/_elements.scss */
 .elements-container ul li span.elm-name {
   margin-top: 15px;
   font-size: 10px;
+}
+
+/* line 1, ../scss/modules/_elementview.scss */
+.element-view {
+  position: absolute;
+  width: 661px;
+  left: 151px;
+  height: 192px;
+  background: #444;
+  padding: 24px;
+}
+/* line 10, ../scss/modules/_elementview.scss */
+.element-view aside {
+  background: #666;
+  height: 192px;
+  width: 160px;
+}
+/* line 16, ../scss/modules/_elementview.scss */
+.element-view h2 {
+  color: #fff;
 }
 
 /* line 1, ../scss/state/_state.scss */

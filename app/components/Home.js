@@ -2,6 +2,7 @@ var React = require('react');
 var helpers = require('../utils/helpers');
 var Row0 = require('./rows/row0');
 var Row1 = require('./rows/row1');
+var ElementView = require('./controls/elementView');
 
 
 var Home = React.createClass({
@@ -33,12 +34,19 @@ var Home = React.createClass({
                 row5: dataObj.row5,
                 row6: dataObj.row6,
                 sub1: dataObj.sub1,
-                sub2: dataObj.sub2
+                sub2: dataObj.sub2,
+                _data: {}
             });
 
 
         }.bind(this));
 
+    },
+
+    onUpdate: function(data){
+        this.setState({
+            _data:data
+        })
     },
 
     render: function(){
@@ -47,17 +55,17 @@ var Home = React.createClass({
             <div className="elements-container">
 
                 <section>
-                  <h2></h2>
+                    <ElementView data={this.state._data} />
                 </section>
 
                 <div>
-                    <Row0 data={this.state.row0} breakPoint="1" />
-                    <Row0 data={this.state.row1} breakPoint="2" />
-                    <Row0 data={this.state.row2} breakPoint="2" />
-                    <Row0 data={this.state.row3} breakPoint="18" />
-                    <Row0 data={this.state.row4} breakPoint="18" />
-                    <Row0 data={this.state.row5} breakPoint="18" />
-                    <Row0 data={this.state.row6} breakPoint="18" />
+                    <Row0 onUpdate={this.onUpdate} data={this.state.row0} breakPoint="1" />
+                    <Row0 onUpdate={this.onUpdate} data={this.state.row1} breakPoint="2" />
+                    <Row0 onUpdate={this.onUpdate} data={this.state.row2} breakPoint="2" />
+                    <Row0 onUpdate={this.onUpdate} data={this.state.row3} breakPoint="18" />
+                    <Row0 onUpdate={this.onUpdate} data={this.state.row4} breakPoint="18" />
+                    <Row0 onUpdate={this.onUpdate} data={this.state.row5} breakPoint="18" />
+                    <Row0 onUpdate={this.onUpdate} data={this.state.row6} breakPoint="18" />
                 </div>
 
                 <div className="sub-elements">

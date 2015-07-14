@@ -1,4 +1,5 @@
 var React = require('react');
+var elementView = require('../controls/elementView');
 
 var row0 = React.createClass({
 
@@ -120,6 +121,25 @@ var row0 = React.createClass({
 
     },
 
+    getInitialState: function(){
+        return {
+            data: '---'
+        }
+    },
+
+
+    update: function (k) {
+
+        console.log('CLICKED: -->', this.props.data[k].small);
+
+        this.props.onUpdate(this.props.data[k].small);
+
+
+
+
+
+    },
+
 
     render: function(){
 
@@ -129,9 +149,6 @@ var row0 = React.createClass({
 
             this._markGroups(elm.group);
 
-            console.log(elm.electrons);
-
-
             if(elm.small === '57-71' || elm.small === '89-103'){
 
                 this.setElmClass = 'pull-left conceal';
@@ -140,15 +157,18 @@ var row0 = React.createClass({
 
             if(index < _BREAK_POINT ){
 
-                return <li className={this.setElmClass} key={index}>
+                return <li onMouseOver={this.update.bind(this, index)}  className={this.setElmClass} key={index}>
 
                             <div className="list-cell">
 
 
                                 <span>{elm.number}</span>
+
                                 <h3>{elm.small}</h3>
 
                                 <span className="elm-name">{elm.name}</span>
+
+                                <div className="clear"></div>
 
                             </div>
 
