@@ -23608,8 +23608,8 @@
 	var React = __webpack_require__(1);
 	var helpers = __webpack_require__(199);
 	var Row0 = __webpack_require__(220);
-	var Row1 = __webpack_require__(221);
-	var ElementView = __webpack_require__(222);
+	var Row1 = __webpack_require__(222);
+	var ElementView = __webpack_require__(221);
 
 	var Home = React.createClass({
 	    displayName: 'Home',
@@ -23624,7 +23624,8 @@
 	            row5: [],
 	            row6: [],
 	            sub1: [],
-	            sub2: []
+	            sub2: [],
+	            data: 'H'
 	        };
 	    },
 
@@ -23642,14 +23643,23 @@
 	                row6: dataObj.row6,
 	                sub1: dataObj.sub1,
 	                sub2: dataObj.sub2,
-	                _data: {}
+	                _small: 'H',
+	                _name: 'Hydrogen',
+	                _number: 1,
+	                _electrons: [1],
+	                _style: ''
 	            });
 	        }).bind(this));
 	    },
 
-	    onUpdate: function onUpdate(data) {
+	    onUpdate: function onUpdate(data, style) {
 	        this.setState({
-	            _data: data
+	            _small: data.small,
+	            _name: data.name,
+	            _number: data.number,
+	            _electrons: data.electrons,
+	            _group: data.group
+
 	        });
 	    },
 
@@ -23660,7 +23670,13 @@
 	            React.createElement(
 	                'section',
 	                null,
-	                React.createElement(ElementView, { data: this.state._data })
+	                React.createElement(ElementView, {
+	                    small: this.state._small,
+	                    name: this.state._name,
+	                    number: this.state._number,
+	                    electrons: this.state._electrons,
+	                    group: this.state._group
+	                })
 	            ),
 	            React.createElement(
 	                'div',
@@ -38105,138 +38121,14 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var elementView = __webpack_require__(222);
+	var Styler = __webpack_require__(223);
+	var elementView = __webpack_require__(221);
 
 	var row0 = React.createClass({
 	    displayName: 'row0',
 
-	    _markGroups: function _markGroups(elm) {
-
-	        switch (elm) {
-
-	            case '':
-	                this.setElmClass = 'pull-left hydrogen';
-
-	                break;
-
-	            case 'Element Noble p':
-	                this.setElmClass = 'pull-left noble';
-
-	                break;
-	            case 'Element Alkali s':
-	                this.setElmClass = 'pull-left alkali';
-
-	                break;
-	            case 'Element Alkaline s':
-	                this.setElmClass = 'pull-left alkaline';
-
-	                break;
-
-	            case 'Element Metalloid Boron p':
-	                this.setElmClass = 'pull-left metalloid m-boron';
-
-	                break;
-
-	            case 'Element Nonmetal Carbon p':
-	                this.setElmClass = 'pull-left nonmetal p-carbon';
-
-	                break;
-
-	            case 'Element Nonmetal Pnictogen p':
-	                this.setElmClass = 'pull-left nonmetal pnictogen';
-
-	                break;
-
-	            case 'Element Nonmetal Chalcogen p':
-	                this.setElmClass = 'pull-left nonmetal chalcogen';
-
-	                break;
-
-	            case 'Element Halogen p':
-	                this.setElmClass = 'pull-left halogen';
-
-	                break;
-
-	            case 'Poor Boron p':
-	                this.setElmClass = 'pull-left poor p-boron';
-
-	                break;
-
-	            // --
-
-	            case 'Element Poor Boron p':
-	                this.setElmClass = 'pull-left poor boron-p';
-
-	                break;
-
-	            case 'Element Metalloid Carbon p':
-	                this.setElmClass = 'pull-left metalloid p-carbon';
-
-	                break;
-
-	            case 'Element Poor Carbon p':
-	                this.setElmClass = 'pull-left poor p-carbon-p';
-
-	                break;
-
-	            case 'Element Metalloid Pnictogen p':
-	                this.setElmClass = 'pull-left metalloid pnictogen-p';
-
-	                break;
-
-	            case 'Element Metalloid Chalcogen p':
-	                this.setElmClass = 'pull-left metalloid chalcogen-p';
-
-	                break;
-
-	            case 'Lanthanoid InnerBorder BlueLeft BlueTop BlueRight':
-	                this.setElmClass = 'pull-left ';
-
-	                break;
-
-	            case 'Actinoid InnerBorder BlueLeft BlueRight':
-	                this.setElmClass = 'pull-left ';
-
-	                break;
-
-	            case 'Element Poor Pnictogen p':
-	                this.setElmClass = 'pull-left poor p-pnictogen-p';
-
-	                break;
-
-	            case 'Element Poor Chalcogen p':
-	                this.setElmClass = 'pull-left poor c-chalcogen-p';
-
-	                break;
-
-	            // ---
-
-	            case 'Element Transition d':
-
-	                this.setElmClass = 'pull-left transition default';
-
-	                break;
-
-	            default:
-	                this.setElmClass = 'pull-left missed';
-
-	                console.log('MISSED 0: -->', elm);
-	                break;
-
-	        }
-	    },
-
-	    getInitialState: function getInitialState() {
-	        return {
-	            data: '---'
-	        };
-	    },
-
 	    update: function update(k) {
-
-	        console.log('CLICKED: -->', this.props.data[k].small);
-
-	        this.props.onUpdate(this.props.data[k].small);
+	        this.props.onUpdate(this.props.data[k]);
 	    },
 
 	    render: function render() {
@@ -38245,7 +38137,7 @@
 
 	        var ul1 = this.props.data.map((function (elm, index) {
 
-	            this._markGroups(elm.group);
+	            this.setElmClass = Styler.setGroups(elm.group); //this._markGroups(elm.group);
 
 	            if (elm.small === '57-71' || elm.small === '89-103') {
 
@@ -38287,11 +38179,11 @@
 
 	            if (index >= _BREAK_POINT) {
 
-	                this._markGroups(elm.group);
+	                this.setElmClass = Styler.setGroups(elm.group);
 
 	                return React.createElement(
 	                    'li',
-	                    { className: this.setElmClass, key: index },
+	                    { onMouseOver: this.update.bind(this, index), className: this.setElmClass, key: index },
 	                    React.createElement(
 	                        'div',
 	                        { className: 'list-cell' },
@@ -38346,52 +38238,62 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
+	var Styler = __webpack_require__(223);
+	var Row0 = __webpack_require__(220);
+
+	var elementView = React.createClass({
+	    displayName: 'elementView',
+
+	    render: function render() {
+
+	        this.setElmClass = Styler.setGroups(this.props.group);
+
+	        return React.createElement(
+	            'div',
+	            { className: 'element-view' },
+	            React.createElement(
+	                'aside',
+	                { className: this.setElmClass },
+	                React.createElement(
+	                    'strong',
+	                    null,
+	                    this.props.number
+	                ),
+	                React.createElement(
+	                    'h2',
+	                    null,
+	                    this.props.small
+	                ),
+	                React.createElement(
+	                    'strong',
+	                    null,
+	                    this.props.name
+	                )
+	            )
+	        );
+	    }
+
+	});
+
+	module.exports = elementView;
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var Styler = __webpack_require__(223);
 
 	var row1 = React.createClass({
 	    displayName: 'row1',
-
-	    _markGroups: function _markGroups(elm) {
-
-	        switch (elm) {
-
-	            case 'Element Lanthanoid f':
-
-	                this.setElmClass = 'pull-left lanthanoid f';
-
-	                break;
-
-	            case 'Element Lanthanoid d':
-
-	                this.setElmClass = 'pull-left lanthanoid d';
-
-	                break;
-
-	            case 'Element Actinoid f':
-
-	                this.setElmClass = 'pull-left actinoid f';
-
-	                break;
-
-	            case 'Element Actinoid d':
-
-	                this.setElmClass = 'pull-left actinoid d';
-
-	                break;
-
-	            default:
-	                this.setElmClass = 'pull-left missed';
-
-	                console.log('MISSED 1: -->', elm);
-	                break;
-
-	        }
-	    },
 
 	    render: function render() {
 
 	        var ul3 = this.props.data.map((function (elm, index) {
 
-	            this._markGroups(elm.group);
+	            this.setElmClass = Styler.setGroups(elm.group);
 
 	            return React.createElement(
 	                'li',
@@ -38435,49 +38337,158 @@
 	module.exports = row1;
 
 /***/ },
-/* 222 */
-/***/ function(module, exports, __webpack_require__) {
+/* 223 */
+/***/ function(module, exports) {
 
 	'use strict';
 
-	var React = __webpack_require__(1);
-	var Row0 = __webpack_require__(220);
+	var styler = {
 
-	var elementView = React.createClass({
-	    displayName: 'elementView',
+	    setGroups: function setGroups(elm) {
 
-	    getInitialState: function getInitialState() {
-	        return {
-	            element: '---'
-	        };
-	    },
+	        switch (elm) {
 
-	    componentDidMount: function componentDidMount() {
+	            case '':
+	                return 'pull-left hydrogen';
 
-	        var test = Row0.data;
+	                break;
 
-	        console.log('DATA: -->', test);
+	            case 'Element Noble p':
+	                return 'pull-left noble';
 
-	        this.setState({
-	            element: test
-	        });
-	    },
+	                break;
+	            case 'Element Alkali s':
+	                return 'pull-left alkali';
 
-	    render: function render() {
-	        return React.createElement(
-	            'div',
-	            { className: 'element-view' },
-	            React.createElement(
-	                'aside',
-	                null,
-	                this.props.data
-	            )
-	        );
+	                break;
+	            case 'Element Alkaline s':
+	                return 'pull-left alkaline';
+
+	                break;
+
+	            case 'Element Metalloid Boron p':
+	                return 'pull-left metalloid m-boron';
+
+	                break;
+
+	            case 'Element Nonmetal Carbon p':
+	                return 'pull-left nonmetal p-carbon';
+
+	                break;
+
+	            case 'Element Nonmetal Pnictogen p':
+	                return 'pull-left nonmetal pnictogen';
+
+	                break;
+
+	            case 'Element Nonmetal Chalcogen p':
+	                return 'pull-left nonmetal chalcogen';
+
+	                break;
+
+	            case 'Element Halogen p':
+	                return 'pull-left halogen';
+
+	                break;
+
+	            case 'Poor Boron p':
+	                return 'pull-left poor p-boron';
+
+	                break;
+
+	            // --
+
+	            case 'Element Poor Boron p':
+	                return 'pull-left poor boron-p';
+
+	                break;
+
+	            case 'Element Metalloid Carbon p':
+	                return 'pull-left metalloid p-carbon';
+
+	                break;
+
+	            case 'Element Poor Carbon p':
+	                return 'pull-left poor p-carbon-p';
+
+	                break;
+
+	            case 'Element Metalloid Pnictogen p':
+	                return 'pull-left metalloid pnictogen-p';
+
+	                break;
+
+	            case 'Element Metalloid Chalcogen p':
+	                return 'pull-left metalloid chalcogen-p';
+
+	                break;
+
+	            case 'Lanthanoid InnerBorder BlueLeft BlueTop BlueRight':
+	                return 'pull-left ';
+
+	                break;
+
+	            case 'Actinoid InnerBorder BlueLeft BlueRight':
+	                return 'pull-left ';
+
+	                break;
+
+	            case 'Element Poor Pnictogen p':
+	                return 'pull-left poor p-pnictogen-p';
+
+	                break;
+
+	            case 'Element Poor Chalcogen p':
+	                return 'pull-left poor c-chalcogen-p';
+
+	                break;
+
+	            case 'Element Transition d':
+
+	                return 'pull-left transition default';
+
+	                break;
+
+	            // --
+
+	            case 'Element Lanthanoid f':
+
+	                return 'pull-left lanthanoid f';
+
+	                break;
+
+	            case 'Element Lanthanoid d':
+
+	                return 'pull-left lanthanoid d';
+
+	                break;
+
+	            case 'Element Actinoid f':
+
+	                return 'pull-left actinoid f';
+
+	                break;
+
+	            case 'Element Actinoid d':
+
+	                return 'pull-left actinoid d';
+
+	                break;
+
+	            // --
+
+	            default:
+	                return 'pull-left missed';
+
+	                console.log('MISSED 0: -->', elm);
+	                break;
+
+	        }
 	    }
 
-	});
+	};
 
-	module.exports = elementView;
+	module.exports = styler;
 
 /***/ }
 /******/ ]);

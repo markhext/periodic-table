@@ -1,0 +1,103 @@
+/* ------------------
+  ELEMENT COLOURS
+  --------------------- */
+
+
+.hydrogen {
+  background:$hydrogen;
+
+  &:hover {
+    background:$hydrogen-on;
+  }
+}
+
+.noble {
+  background:$noble;
+
+  &:hover {
+    background:$noble-on;
+  }
+}
+
+.alkali {
+  background:$alkali;
+
+  &:hover {
+    background:$alkali-on;
+  }
+}
+
+.alkaline {
+  background:$alkaline;
+
+  &:hover {
+    background:$alkaline-on;
+  }
+}
+
+.metalloid {
+  background:$metalloid;
+
+  &:hover {
+    background:$metalloid-on;
+  }
+}
+
+.nonmetal {
+  background:$nonmetal;
+
+  &:hover {
+    background:$nonmetal-on;
+  }
+}
+
+.halogen {
+  background:$halogen;
+
+  &:hover {
+    background:$halogen-on;
+  }
+}
+
+.poor {
+  background:$poor;
+
+  &:hover {
+    background:$poor-on;
+  }
+}
+
+.transition {
+  background:$transition;
+
+  &:hover {
+    background:$transition-on;
+  }
+}
+
+// SUBS
+
+
+.lanthanoid {
+  background:$lanthanoid;
+
+  &:hover {
+    background:$lanthanoid-on;
+  }
+
+}
+
+.actinoid {
+  background:$actinoid;
+
+  &:hover {
+    background:$actinoid-on;
+  }
+
+}
+
+
+.missed {
+  background: #fff;
+  color:#000;
+}

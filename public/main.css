@@ -456,9 +456,9 @@ h1 {
   width: 46px;
   height: 55px;
   padding: 12px;
-  background: #F3F5C4;
   transition: all linear 0.2s;
   cursor: pointer;
+  float: left;
 }
 /* line 20, ../scss/modules/_elements.scss */
 .elements-container ul li .list-cell {
@@ -489,19 +489,23 @@ h1 {
   position: absolute;
   width: 661px;
   left: 151px;
-  height: 192px;
-  background: #444;
-  padding: 24px;
 }
-/* line 10, ../scss/modules/_elementview.scss */
+/* line 7, ../scss/modules/_elementview.scss */
 .element-view aside {
-  background: #666;
-  height: 192px;
-  width: 160px;
+  height: 145px;
+  width: 127px;
+  padding: 7px;
+  margin-top: 81px;
 }
-/* line 16, ../scss/modules/_elementview.scss */
+/* line 15, ../scss/modules/_elementview.scss */
 .element-view h2 {
-  color: #fff;
+  font-size: 48px;
+  line-height: 0;
+}
+/* line 20, ../scss/modules/_elementview.scss */
+.element-view strong {
+  font-size: 18px;
+  font-weight: 400;
 }
 
 /* line 1, ../scss/state/_state.scss */
@@ -519,12 +523,6 @@ h1 {
   clear: both;
 }
 
-/* line 13, ../scss/state/_state.scss */
-.elements-container ul {
-  /* ------------------
-  ELEMENT COLOURS
-  --------------------- */
-}
 /* line 15, ../scss/state/_state.scss */
 .elements-container ul li.adjust-value {
   height: 69px;
@@ -541,96 +539,111 @@ h1 {
 .elements-container ul .conceal {
   visibility: hidden;
 }
-/* line 37, ../scss/state/_state.scss */
-.elements-container ul .hydrogen {
+
+/* ------------------
+  ELEMENT COLOURS
+  --------------------- */
+/* line 6, ../scss/state/_styler.scss */
+.hydrogen {
   background: #F3FFE2;
 }
-/* line 40, ../scss/state/_state.scss */
-.elements-container ul .hydrogen:hover {
+/* line 9, ../scss/state/_styler.scss */
+.hydrogen:hover {
   background: #ffffff;
 }
-/* line 46, ../scss/state/_state.scss */
-.elements-container ul .noble {
+
+/* line 14, ../scss/state/_styler.scss */
+.noble {
   background: #3CBAC8;
 }
-/* line 49, ../scss/state/_state.scss */
-.elements-container ul .noble:hover {
+/* line 17, ../scss/state/_styler.scss */
+.noble:hover {
   background: #41deec;
 }
-/* line 54, ../scss/state/_state.scss */
-.elements-container ul .alkali {
+
+/* line 22, ../scss/state/_styler.scss */
+.alkali {
   background: #F0CA4D;
 }
-/* line 57, ../scss/state/_state.scss */
-.elements-container ul .alkali:hover {
+/* line 25, ../scss/state/_styler.scss */
+.alkali:hover {
   background: #ffec66;
 }
-/* line 62, ../scss/state/_state.scss */
-.elements-container ul .alkaline {
+
+/* line 30, ../scss/state/_styler.scss */
+.alkaline {
   background: #F3B562;
 }
-/* line 65, ../scss/state/_state.scss */
-.elements-container ul .alkaline:hover {
+/* line 33, ../scss/state/_styler.scss */
+.alkaline:hover {
   background: #ffc982;
 }
-/* line 70, ../scss/state/_state.scss */
-.elements-container ul .metalloid {
+
+/* line 38, ../scss/state/_styler.scss */
+.metalloid {
   background: #85CC9F;
 }
-/* line 73, ../scss/state/_state.scss */
-.elements-container ul .metalloid:hover {
+/* line 41, ../scss/state/_styler.scss */
+.metalloid:hover {
   background: #99e0b3;
 }
-/* line 78, ../scss/state/_state.scss */
-.elements-container ul .nonmetal {
+
+/* line 46, ../scss/state/_styler.scss */
+.nonmetal {
   background: #C8E8C7;
 }
-/* line 81, ../scss/state/_state.scss */
-.elements-container ul .nonmetal:hover {
+/* line 49, ../scss/state/_styler.scss */
+.nonmetal:hover {
   background: #dfffde;
 }
-/* line 86, ../scss/state/_state.scss */
-.elements-container ul .halogen {
+
+/* line 54, ../scss/state/_styler.scss */
+.halogen {
   background: #93EDD4;
 }
-/* line 89, ../scss/state/_state.scss */
-.elements-container ul .halogen:hover {
+/* line 57, ../scss/state/_styler.scss */
+.halogen:hover {
   background: #aaffe9;
 }
-/* line 94, ../scss/state/_state.scss */
-.elements-container ul .poor {
+
+/* line 62, ../scss/state/_styler.scss */
+.poor {
   background: #63A69F;
 }
-/* line 97, ../scss/state/_state.scss */
-.elements-container ul .poor:hover {
+/* line 65, ../scss/state/_styler.scss */
+.poor:hover {
   background: #78bab3;
 }
-/* line 102, ../scss/state/_state.scss */
-.elements-container ul .transition {
+
+/* line 70, ../scss/state/_styler.scss */
+.transition {
   background: #F2836B;
 }
-/* line 105, ../scss/state/_state.scss */
-.elements-container ul .transition:hover {
+/* line 73, ../scss/state/_styler.scss */
+.transition:hover {
   background: #ff9c81;
 }
-/* line 113, ../scss/state/_state.scss */
-.elements-container ul .lanthanoid {
+
+/* line 81, ../scss/state/_styler.scss */
+.lanthanoid {
   background: #87A0A4;
 }
-/* line 116, ../scss/state/_state.scss */
-.elements-container ul .lanthanoid:hover {
+/* line 84, ../scss/state/_styler.scss */
+.lanthanoid:hover {
   background: #9cb5b9;
 }
-/* line 122, ../scss/state/_state.scss */
-.elements-container ul .actinoid {
+
+/* line 90, ../scss/state/_styler.scss */
+.actinoid {
   background: #56797F;
 }
-/* line 125, ../scss/state/_state.scss */
-.elements-container ul .actinoid:hover {
+/* line 93, ../scss/state/_styler.scss */
+.actinoid:hover {
   background: #6a8d93;
 }
-/* line 132, ../scss/state/_state.scss */
-.elements-container ul .missed {
+
+/* line 100, ../scss/state/_styler.scss */
+.missed {
   background: #fff;
   color: #000;
 }

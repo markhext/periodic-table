@@ -1,35 +1,25 @@
 var React = require('react');
+var Styler = require('../../utils/styler');
 var Row0 = require('../rows/row0');
+
 
 
 var elementView = React.createClass({
 
-    getInitialState: function(){
-       return {
-           element: '---'
-       }
-    },
 
-    componentDidMount: function () {
-
-        var test = Row0.data;
-
-        console.log('DATA: -->', test);
-
-        this.setState({
-            element: test
-        })
-
-    },
 
 
     render: function(){
-        return (
 
+        this.setElmClass =  Styler.setGroups(this.props.group);
+
+        return (
             <div className="element-view">
 
-                <aside>
-                {this.props.data}
+                <aside className={this.setElmClass}>
+                    <strong>{this.props.number}</strong>
+                    <h2>{this.props.small}</h2>
+                    <strong>{this.props.name}</strong>
                 </aside>
 
             </div>

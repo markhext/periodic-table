@@ -3,17 +3,22 @@
   position: absolute;
   width: 661px;
   left:151px;
-  height:192px;
-  background: #444;
-  padding:24px;
 
   aside {
-    background: #666;
-    height:192px;
-    width:160px;
+    height:145px;
+    width:127px;
+    padding: 7px;
+    margin-top:81px;
+
   }
 
   h2{
-    color:#fff;
+    font-size: 48px;
+    line-height: 0;
+  }
+
+  strong {
+    font-size: 18px;
+    font-weight: 400;
   }
 }

@@ -17,7 +17,8 @@ var Home = React.createClass({
          row5: [],
          row6: [],
          sub1: [],
-         sub2: []
+         sub2: [],
+         data: 'H'
       }
     },
 
@@ -35,7 +36,11 @@ var Home = React.createClass({
                 row6: dataObj.row6,
                 sub1: dataObj.sub1,
                 sub2: dataObj.sub2,
-                _data: {}
+                _small: 'H',
+                _name: 'Hydrogen',
+                _number: 1,
+                _electrons: [1],
+                _style: ''
             });
 
 
@@ -43,11 +48,17 @@ var Home = React.createClass({
 
     },
 
-    onUpdate: function(data){
+    onUpdate: function(data, style){
         this.setState({
-            _data:data
+            _small: data.small,
+            _name: data.name,
+            _number: data.number,
+            _electrons: data.electrons,
+            _group: data.group
+
         })
     },
+
 
     render: function(){
         return (
@@ -55,7 +66,14 @@ var Home = React.createClass({
             <div className="elements-container">
 
                 <section>
-                    <ElementView data={this.state._data} />
+                    <ElementView
+                        small={this.state._small}
+                        name={this.state._name}
+                        number={this.state._number}
+                        electrons={this.state._electrons}
+                        group={this.state._group}
+                    />
+
                 </section>
 
                 <div>
