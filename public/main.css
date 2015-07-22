@@ -436,7 +436,7 @@ h4, h4, h6, strong {
 /* line 16, ../scss/modules/_app.scss */
 h1 {
   font-size: 26px;
-  color: #eee;
+  color: red;
   font-weight: 700;
 }
 

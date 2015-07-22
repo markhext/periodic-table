@@ -23608,8 +23608,8 @@
 	var React = __webpack_require__(1);
 	var helpers = __webpack_require__(199);
 	var Row0 = __webpack_require__(220);
-	var Row1 = __webpack_require__(222);
-	var ElementView = __webpack_require__(221);
+	var Row1 = __webpack_require__(223);
+	var ElementView = __webpack_require__(222);
 
 	var Home = React.createClass({
 	    displayName: 'Home',
@@ -23630,10 +23630,11 @@
 	    },
 
 	    componentDidMount: function componentDidMount() {
+	        var _this = this;
 
-	        helpers.getElementInfo().then((function (dataObj) {
+	        helpers.getElementInfo().then(function (dataObj) {
 
-	            this.setState({
+	            _this.setState({
 	                row0: dataObj.row0,
 	                row1: dataObj.row1,
 	                row2: dataObj.row2,
@@ -23649,7 +23650,7 @@
 	                _electrons: [1],
 	                _style: ''
 	            });
-	        }).bind(this));
+	        });
 	    },
 
 	    onUpdate: function onUpdate(data, style) {
@@ -38121,8 +38122,8 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var Styler = __webpack_require__(223);
-	var elementView = __webpack_require__(221);
+	var Styler = __webpack_require__(221);
+	var elementView = __webpack_require__(222);
 
 	var row0 = React.createClass({
 	    displayName: 'row0',
@@ -38233,111 +38234,6 @@
 
 /***/ },
 /* 221 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1);
-	var Styler = __webpack_require__(223);
-	var Row0 = __webpack_require__(220);
-
-	var elementView = React.createClass({
-	    displayName: 'elementView',
-
-	    render: function render() {
-
-	        this.setElmClass = Styler.setGroups(this.props.group);
-
-	        return React.createElement(
-	            'div',
-	            { className: 'element-view' },
-	            React.createElement(
-	                'aside',
-	                { className: this.setElmClass },
-	                React.createElement(
-	                    'strong',
-	                    null,
-	                    this.props.number
-	                ),
-	                React.createElement(
-	                    'h2',
-	                    null,
-	                    this.props.small
-	                ),
-	                React.createElement(
-	                    'strong',
-	                    null,
-	                    this.props.name
-	                )
-	            )
-	        );
-	    }
-
-	});
-
-	module.exports = elementView;
-
-/***/ },
-/* 222 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1);
-	var Styler = __webpack_require__(223);
-
-	var row1 = React.createClass({
-	    displayName: 'row1',
-
-	    render: function render() {
-
-	        var ul3 = this.props.data.map((function (elm, index) {
-
-	            this.setElmClass = Styler.setGroups(elm.group);
-
-	            return React.createElement(
-	                'li',
-	                { className: this.setElmClass, key: index },
-	                React.createElement(
-	                    'div',
-	                    { className: 'list-cell' },
-	                    React.createElement(
-	                        'span',
-	                        { className: 'electrons' },
-	                        elm.number
-	                    ),
-	                    React.createElement(
-	                        'h3',
-	                        null,
-	                        elm.small
-	                    ),
-	                    React.createElement(
-	                        'span',
-	                        { className: 'elm-name' },
-	                        elm.name
-	                    )
-	                )
-	            );
-	        }).bind(this));
-
-	        return React.createElement(
-	            'section',
-	            { className: 'pull-right' },
-	            React.createElement(
-	                'ul',
-	                null,
-	                ul3,
-	                React.createElement('div', { className: 'clear' })
-	            ),
-	            React.createElement('div', { className: 'clear' })
-	        );
-	    }
-	});
-
-	module.exports = row1;
-
-/***/ },
-/* 223 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38489,6 +38385,111 @@
 	};
 
 	module.exports = styler;
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var Styler = __webpack_require__(221);
+	var Row0 = __webpack_require__(220);
+
+	var elementView = React.createClass({
+	    displayName: 'elementView',
+
+	    render: function render() {
+
+	        this.setElmClass = Styler.setGroups(this.props.group);
+
+	        return React.createElement(
+	            'div',
+	            { className: 'element-view' },
+	            React.createElement(
+	                'aside',
+	                { className: this.setElmClass },
+	                React.createElement(
+	                    'strong',
+	                    null,
+	                    this.props.number
+	                ),
+	                React.createElement(
+	                    'h2',
+	                    null,
+	                    this.props.small
+	                ),
+	                React.createElement(
+	                    'strong',
+	                    null,
+	                    this.props.name
+	                )
+	            )
+	        );
+	    }
+
+	});
+
+	module.exports = elementView;
+
+/***/ },
+/* 223 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var Styler = __webpack_require__(221);
+
+	var row1 = React.createClass({
+	    displayName: 'row1',
+
+	    render: function render() {
+
+	        var ul3 = this.props.data.map((function (elm, index) {
+
+	            this.setElmClass = Styler.setGroups(elm.group);
+
+	            return React.createElement(
+	                'li',
+	                { className: this.setElmClass, key: index },
+	                React.createElement(
+	                    'div',
+	                    { className: 'list-cell' },
+	                    React.createElement(
+	                        'span',
+	                        { className: 'electrons' },
+	                        elm.number
+	                    ),
+	                    React.createElement(
+	                        'h3',
+	                        null,
+	                        elm.small
+	                    ),
+	                    React.createElement(
+	                        'span',
+	                        { className: 'elm-name' },
+	                        elm.name
+	                    )
+	                )
+	            );
+	        }).bind(this));
+
+	        return React.createElement(
+	            'section',
+	            { className: 'pull-right' },
+	            React.createElement(
+	                'ul',
+	                null,
+	                ul3,
+	                React.createElement('div', { className: 'clear' })
+	            ),
+	            React.createElement('div', { className: 'clear' })
+	        );
+	    }
+	});
+
+	module.exports = row1;
 
 /***/ }
 /******/ ]);

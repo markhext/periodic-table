@@ -24,7 +24,7 @@ var Home = React.createClass({
 
     componentDidMount: function () {
 
-        helpers.getElementInfo().then(function(dataObj){
+        helpers.getElementInfo().then(dataObj => {
 
             this.setState({
                 row0: dataObj.row0,
@@ -44,7 +44,7 @@ var Home = React.createClass({
             });
 
 
-        }.bind(this));
+        });
 
     },
 
